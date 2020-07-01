@@ -33,6 +33,13 @@ func (_ *Infiniband) Gather(acc telegraf.Accumulator) error {
 			}
 
 			addStats(dev, port, stats, acc)
+
+			stats, err := rdmamap.GetRdmaSysfsHwStats(dev, portInt)
+         if err != nil {
+            return err
+         }
+
+         addStats(dev, port, stats, acc)
 		}
 	}
 
