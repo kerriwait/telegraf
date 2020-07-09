@@ -393,7 +393,7 @@ func (l *Lustre2) GetLustreProcStats(fileglob string, wantedFields []*mapping, a
 				if len(line) < 1 {
 					continue
 				}
-				parts := strings.Fields(line)
+				parts := strings.FieldsFunc(line, SplitObdFilter)
 
 				var fields map[string]interface{}
 				fields, ok := l.allFields[tags{name, jobid}]
@@ -426,6 +426,12 @@ func (l *Lustre2) GetLustreProcStats(fileglob string, wantedFields []*mapping, a
 		}
 	}
 	return nil
+}
+
+// A more robust split function to handle complex string formats in
+// "/proc/fs/lustre/obdfilter/*/job_stats" files
+func SplitObdFilter(r rune) bool {
+	return r == ':' || r == ' '
 }
 
 // SampleConfig returns sample configuration message
