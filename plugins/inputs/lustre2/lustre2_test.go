@@ -70,6 +70,20 @@ const obdfilterJobStatsContents = `job_stats:
   get_info:        { samples:           0, unit:  reqs }
   set_info:        { samples:           0, unit:  reqs }
   quotactl:        { samples:           0, unit:  reqs }
+- job_id:          testjob3
+  snapshot_time:   1461772761
+  read_bytes:      { samples:           1, unit: bytes, min:    1024, max:14462976, sum:      9878110208 }
+  write_bytes:     { samples:          25, unit: bytes, min:    2048, max:    2048, sum:           51200 }
+  getattr:         { samples:           0, unit:  reqs }
+  setattr:         { samples:           0, unit:  reqs }
+  punch:           { samples:           1, unit:  reqs }
+  sync:            { samples:           0, unit:  reqs }
+  destroy:         { samples:           0, unit:  reqs }
+  create:          { samples:           0, unit:  reqs }
+  statfs:          { samples:           0, unit:  reqs }
+  get_info:        { samples:           0, unit:  reqs }
+  set_info:        { samples:           0, unit:  reqs }
+  quotactl:        { samples:           0, unit:  reqs }
 `
 
 const mdtProcContents = `snapshot_time             1438693238.20113 secs.usecs
